@@ -1,0 +1,64 @@
+-------------
+0
+1 2 3 
+-----
+Number of steps = 4
+Solved = 1
+
+real	0m0.005s
+user	0m0.000s
+sys	0m0.005s
+-------------
+1
+1 2 3 7 8 9 
+-----------
+Number of steps = 3
+Solved = 1
+
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+-------------
+2
+9 7 3 8 
+5 4 
+-------
+Number of steps = 6
+Solved = 1
+
+real	0m0.004s
+user	0m0.004s
+sys	0m0.000s
+-------------
+3
+6 6 3 5 9 
+5 8 
+---------
+Number of steps = 7
+Solved = 1
+
+real	0m0.102s
+user	0m0.086s
+sys	0m0.016s
+-------------
+4
+1 2 7 3 3 
+9 4 
+---------
+Number of steps = 7
+Solved = 1
+
+real	0m0.566s
+user	0m0.434s
+sys	0m0.132s
+-------------
+5
+4 2 3 8 2 
+2 4 
+---------
+Number of steps = 7
+Solved = 1
+
+real	0m0.871s
+user	0m0.682s
+sys	0m0.189s
