@@ -1,0 +1,135 @@
+Implement solver based on BFS for "Number game" or "Numberama".
+
+Link:
+http://www.playonlinedicegames.com/numberama
+you can also install it on your mobile device. 
+
+Game rules:
+you are given a sequence of digits 1..9 (no zeros) organized in
+rows of fixed size. Last row may be shorter. The goal is to remove 
+all digits. Digits are removed in pairs - so called "neighbors". 
+Neighbors have to satisfy two properties:
+1) quantitative: neighbors are either equal or add up to 10
+2) positional:   neighbors are next to each other either 
+    a) vertically   - positioned in the same column with no digits in between
+    b) horizontally - one can be reached from another by following row 
+       (wrapping around in the end  or beginning of a row) with no digits in between.
+
+Examples of neighbors (dot stands for a deleted digit):
+1) 1 . . . 1
+2) . . 3 . . . 7 . .
+3) 1 2 3 4 . . .
+   . 6 7           (4 and 6 are neighbors)
+4) 7 and 3 are also neighbors in example 3
+
+There is an extra move in the game - called "check". At any moment 
+player can duplicate the board by copying all remaining digits into
+the end of the table: in the same order they are currently on the board and 
+skipping deleted digits.
+
+Example:
+. . 1 . 4 . .
+9 . . 
+note there no other moves but check.
+
+After check (notice two deleted digits in the original field are NOT overwritten):
+. . 1 . 4 . .
+9 . . 1 4 9
+delete vertical pair 4 and 4
+. . 1 . . . .
+9 . . 1 . 9
+delete two pair 1 and 9, problem solved.
+
+The previous example is solved in 4 steps: check, vert, hor, hor. 
+Counting check as a move is different from some online discussions 
+which count it as 0.
+
+test0
+1 2 3 4 5 6 7 8 9 
+1 1 1 2 1 3 1 4 1 
+5 1 6 1 7 1 8 
+-----------------
+Number of steps = 44
+Solved = 1
+
+time	0m0.013s
+
+==========================
+test1
+1 2 3 4 5 6 7 8 9 
+-----------------
+Number of steps = 10
+Solved = 1
+
+time	0m0.003s
+
+==========================
+test2
+8 5 
+7 3 
+9 4 
+2 3 
+9 3 
+---
+Number of steps = 102
+Solved = 1
+
+time	0m0.236s
+
+==========================
+test3
+3 1 9 6 9 8 1 2 4 
+2 1 5 
+-----------------
+Number of steps = 50
+Solved = 1
+
+time	0m0.022s
+
+==========================
+test4
+2 4 3 6 5 8 7 2 3 
+3 1 4 
+-----------------
+Number of steps = 61
+Solved = 1
+
+time	0m0.035s
+
+==========================
+test5
+7 9 4 3 9 5 6 2 7 7 6 4 3 4 8 3 1 5 2 6 
+8 3 2 2 9 6 1 5 4 7 1 5 9 1 9 5 9 8 6 8 
+1 5 7 4 3 6 4 1 4 1 8 1 5 5 7 8 4 5 6 7 
+2 4 8 4 7 8 3 9 3 1 2 6 3 9 7 3 9 8 2 5 
+3 8 4 3 4 3 8 6 6 6 2 2 7 6 7 1 5 2 2 1 
+---------------------------------------
+Number of steps = 251
+Solved = 1
+
+time	0m27.593s
+
+==========================
+test6
+7 3 2 9 4 5 9 2 6 2 1 2 1 7 9 3 5 3 6 1 
+6 9 7 1 3 5 7 3 3 1 7 6 5 8 4 8 3 5 1 2 
+8 1 5 6 1 2 7 8 7 9 3 1 1 8 2 1 2 7 7 3 
+6 5 6 2 5 9 6 8 8 5 1 1 2 8 2 9 8 9 2 3 
+5 5 7 5 7 1 9 3 8 1 5 8 5 1 7 8 8 8 3 7 
+---------------------------------------
+Number of steps = 127
+Solved = 1
+
+time	1m0.258s
+
+==========================
+test7
+4 5 6 
+5 7 9 
+2 4 4 
+1 
+-----
+Number of steps = 148
+Solved = 1
+
+time	0m5.858s
