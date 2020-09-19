@@ -59,7 +59,7 @@ SolveNumbergameBFS(std::string const& filename)
 
       std::tuple<unsigned, unsigned> pair = RmPair(field, fr, w);
       // if no pair
-      if (not std::get<1>(pair))
+      if (std::get<0>(pair) == 0 and std::get<1>(pair) == 0)
       {
         continue;
       }
@@ -75,7 +75,7 @@ std::tuple<unsigned, unsigned>
 RmPair(std::vector<int>& field, unsigned ind, unsigned width)
 {
   // search towards right
-  for (size_t i = ind + 1; i < field.size(); i++)
+  for (int i = ind + 1; i < field.size(); i++)
   {
     if (field[i] == 0)
     {
@@ -144,7 +144,7 @@ RmPair(std::vector<int>& field, unsigned ind, unsigned width)
     return std::make_tuple(ind, topInd);
   }
 
-  return std::make_tuple(ind, 0);
+  return std::make_tuple(0, 0);
 }
 
 bool IsChecking(
