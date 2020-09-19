@@ -148,6 +148,12 @@
     <ClCompile Include="source\numbergame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="file\in0" />
+    <None Include="file\in1" />
+    <None Include="file\in2" />
+    <None Include="file\in3" />
+    <None Include="file\in4" />
+    <None Include="file\in5" />
     <None Include="file\out0" />
     <None Include="file\out1" />
     <None Include="file\out2" />

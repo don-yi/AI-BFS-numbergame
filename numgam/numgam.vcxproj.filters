@@ -46,6 +46,24 @@
     <None Include="file\out5">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="file\in0">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="file\in1">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="file\in2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="file\in3">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="file\in4">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="file\in5">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="file\handout.txt">
