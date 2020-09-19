@@ -63,15 +63,10 @@ SolveNumbergameBFS(std::string const& filename)
       {
         continue;
       }
-      // if paired after check
-      else if (std::get<1>(pair) >= originalSize)
-      {
-        std::get<1>(pair) = std::get<0>(pair);
-      }
       // pair found, push
       sol.push_back(pair);
     }
-  } while (IsChecking(field)); // til solved (no checks)
+  } while (IsChecking(field, sol)); // til solved (no checks)
 
   return sol;
 }
@@ -152,7 +147,9 @@ RmPair(std::vector<int>& field, unsigned ind, unsigned width)
   return std::make_tuple(ind, 0);
 }
 
-bool IsChecking(std::vector<int>& field)
+bool IsChecking(
+  std::vector< int >& field, std::vector<std::tuple<unsigned, unsigned>>& sol
+)
 {
   // init checking bool
   bool isChecking = false;
@@ -169,6 +166,12 @@ bool IsChecking(std::vector<int>& field)
     // do check
     field.push_back(field[i]);
     isChecking = true;
+  }
+
+  // push to sol w/ check
+  if (isChecking)
+  {
+    sol.push_back(std::make_tuple(0, 0));
   }
 
   return isChecking;

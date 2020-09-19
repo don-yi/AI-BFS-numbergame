@@ -17,6 +17,8 @@ SolveNumbergameBFS( std::string const& filename );
 std::tuple<unsigned, unsigned>
 RmPair(std::vector< int >&  field, unsigned ind, unsigned width);
 
-bool IsChecking(std::vector< int >& field);
+bool IsChecking(
+  std::vector< int >& field, std::vector<std::tuple<unsigned, unsigned>>& sol
+);
 
 #endif
