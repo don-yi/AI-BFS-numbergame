@@ -42,11 +42,11 @@ SolveNumbergameBFS(std::string const& filename)
 
       // handle q
       q.pop();
-      if ((fr + 1) % w and (fr + 1) < field.size() and field[fr + 1])
+      if ((fr + 1) % w and (fr + 1) < field.size())
       {
         q.push(fr + 1);
       }
-      if ((fr + w) < field.size() and field[fr + w])
+      if ((fr + w) < field.size())
       {
         q.push(fr + w);
       }
