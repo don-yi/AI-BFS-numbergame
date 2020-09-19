@@ -23,6 +23,8 @@ SolveNumbergameBFS(std::string const& filename)
     infile >> input;
   }
 
+  int const originalSize = field.size();
+
 
   // main bfs impl
   std::vector<std::tuple<unsigned, unsigned>> sol;
@@ -56,10 +58,17 @@ SolveNumbergameBFS(std::string const& filename)
       }
 
       std::tuple<unsigned, unsigned> pair = RmPair(field, fr, w);
+      // if no pair
       if (not std::get<1>(pair))
       {
         continue;
       }
+      // if paired after check
+      else if (std::get<1>(pair) >= originalSize)
+      {
+        std::get<1>(pair) = std::get<0>(pair);
+      }
+      // pair found, push
       sol.push_back(pair);
     }
   } while (IsChecking(field)); // til solved (no checks)
@@ -78,7 +87,7 @@ RmPair(std::vector<int>& field, unsigned ind, unsigned width)
       continue;
     }
 
-    if (field[i] == field[ind])
+    if (field[i] == field[ind] or field[i] + field[ind] == 10)
     {
       field[i] = 0;
       field[ind] = 0;
@@ -101,7 +110,7 @@ RmPair(std::vector<int>& field, unsigned ind, unsigned width)
         continue;
       }
 
-      if (field[i] == field[ind])
+      if (field[i] == field[ind] or field[i] + field[ind] == 10)
       {
         field[i] = 0;
         field[ind] = 0;
@@ -116,7 +125,11 @@ RmPair(std::vector<int>& field, unsigned ind, unsigned width)
 
   // num below
   unsigned downInd = ind + width;
-  if (downInd < field.size() and field[downInd] == field[ind])
+  if (
+    downInd < field.size()
+    and
+    (field[downInd] == field[ind] or field[downInd] + field[ind] == 10)
+    )
   {
     field[downInd] = 0;
     field[ind] = 0;
@@ -125,7 +138,11 @@ RmPair(std::vector<int>& field, unsigned ind, unsigned width)
 
   // num above
   int topInd = ind - width;
-  if (topInd >= 0 and field[topInd] == field[ind])
+  if (
+    topInd >= 0
+    and
+    (field[topInd] == field[ind] or field[topInd] + field[ind] == 10)
+    )
   {
     field[topInd] = 0;
     field[ind] = 0;
