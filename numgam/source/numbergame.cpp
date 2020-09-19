@@ -23,8 +23,6 @@ SolveNumbergameBFS(std::string const& filename)
     infile >> input;
   }
 
-  int const originalSize = field.size();
-
 
   // main bfs impl
   std::vector<std::tuple<unsigned, unsigned>> sol;
@@ -75,7 +73,7 @@ std::tuple<unsigned, unsigned>
 RmPair(std::vector<int>& field, unsigned ind, unsigned width)
 {
   // search towards right
-  for (int i = ind + 1; i < field.size(); i++)
+  for (size_t i = ind + 1; i < field.size(); i++)
   {
     if (field[i] == 0)
     {
@@ -94,27 +92,23 @@ RmPair(std::vector<int>& field, unsigned ind, unsigned width)
     }
   }
 
-    // search towards left
-  // zero sub check
-  if ((ind - 1) >= 0)
+  // search towards left
+  for (int i = ind - 1; i >= 0; --i)
   {
-    for (int i = ind - 1; i >= 0; --i)
+    if (field[i] == 0)
     {
-      if (field[i] == 0)
-      {
-        continue;
-      }
+      continue;
+    }
 
-      if (field[i] == field[ind] or field[i] + field[ind] == 10)
-      {
-        field[i] = 0;
-        field[ind] = 0;
-        return std::make_tuple(ind, i);
-      }
-      else
-      {
-        break;
-      }
+    if (field[i] == field[ind] or field[i] + field[ind] == 10)
+    {
+      field[i] = 0;
+      field[ind] = 0;
+      return std::make_tuple(ind, i);
+    }
+    else
+    {
+      break;
     }
   }
 
