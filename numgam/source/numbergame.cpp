@@ -40,11 +40,11 @@ SolveNumbergameBFS(std::string const& filename)
 
       // handle q
       q.pop();
-      if ((fr + 1) % w and (fr + 1) < field.size())
+      if ((fr + 1) % w and (fr + 1) < field.size() and field[fr + 1])
       {
         q.push(fr + 1);
       }
-      if ((fr + w) < field.size())
+      if ((fr + w) < field.size() and field[fr + w])
       {
         q.push(fr + w);
       }
@@ -92,7 +92,7 @@ RmPair(std::vector<int>& field, unsigned ind, unsigned width)
 
     // search towards left
   // zero sub check
-  if (ind - 1 >= 0)
+  if ((ind - 1) >= 0)
   {
     for (int i = ind - 1; i >= 0; --i)
     {
@@ -142,7 +142,7 @@ bool IsChecking(std::vector<int>& field)
 
   // find existing num
   unsigned size = field.size();
-  for (size_t i = 0; i < size; i++)
+  for (unsigned i = 0; i < size; i++)
   {
     if (not field[i])
     {
