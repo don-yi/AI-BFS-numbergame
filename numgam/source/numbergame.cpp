@@ -26,9 +26,15 @@ SolveNumbergameBFS(std::string const& filename)
 
   // main bfs impl
   std::vector<std::tuple<unsigned, unsigned>> sol;
+  bool foundPair;
+  bool isChecking;
 
   do
   {
+    // re-init bool for loop
+    foundPair = false;
+    isChecking = false;
+
     // q init
     std::queue<int> q;
     q.push(0);
@@ -63,8 +69,16 @@ SolveNumbergameBFS(std::string const& filename)
       }
       // pair found, push
       sol.push_back(pair);
+      foundPair = true;
     }
-  } while (IsChecking(field, sol)); // til solved (no checks)
+
+    // if no pair, check for "check"
+    if (not foundPair)
+    {
+      isChecking = IsChecking(field, sol);
+    }
+
+  } while (foundPair or isChecking); // til solved (no checks)
 
   return sol;
 }
